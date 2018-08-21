@@ -12,7 +12,8 @@ class List extends Component {
         </div>, 
         <div class="listItemButton">
           <button class="ringButton" >klingeln</button>
-        </div>
+        </div>,
+        <div class="listSeparator"/>
       ]);
     })
 
