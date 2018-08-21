@@ -1,0 +1,39 @@
+.listContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px 10px;
+}
+
+.listItemName {
+  grid-column: 1;
+  justify-self: center;
+  align-self: center;
+  padding: 25px;
+}
+
+.listItemButton {
+  grid-column: 2;
+  justify-self: center;
+  align-self: center;
+}
+
+.ringButton {
+  background-color: white; 
+  color: black; 
+  border: 2px solid darkcyan;
+  border-radius: 100px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.5s; /* Safari */
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+.ringButton:hover {
+  background-color: darkcyan;
+  color: white;
+}

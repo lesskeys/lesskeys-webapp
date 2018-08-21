@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Table } from 'reactstrap'
 import './style/App.css';
 import Header from './Header';
+import List from './List';
 
 class App extends Component {
   state = {
@@ -16,36 +16,15 @@ class App extends Component {
   }
 
   render() {
-    const {users, isLoading} = this.state;
-
-    if (isLoading) {
+    
+    if (this.state.isLoading) {
       return <p>Loading...</p>
     }
-
-    const userList = users.map(user => {
-      const email = user.email;
-      return <tr key={user.userId}>
-        <td style={{whiteSpace: 'nowrap'}}>{user.firstName}</td>
-        <td>
-          <Button size="sm" color="primary">Ring</Button>
-        </td>
-      </tr>
-    });
 
     return (
       <div className="App">
         <Header/>
-        <Table className="mt-4">
-          <thread>
-            <tr>
-              <th width="20%">Name</th>
-              <th width="10%">Actions</th>
-            </tr>
-          </thread>
-          <tbody>
-          {userList}
-          </tbody>
-        </Table>
+        <List users={this.state.users}/>
       </div>
     );
   }
