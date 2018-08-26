@@ -17,6 +17,12 @@ class Modal extends Component {
     });
   }
 
+  onClickOutside (evt) {
+    if (!evt.target.closest('.modal')) {
+      this.cancelRing()
+    }
+  }
+
   updateInputValue (evt) {
     this.setState({
       inputValue: evt.target.value
@@ -26,21 +32,25 @@ class Modal extends Component {
   render () {
 
     if (!this.props.show) {
-      return null;
+      return null
     }
 
     return (
-      <div className="backdrop" onClick={this.cancelRing}>
+      <div className="backdrop" onClick={(e) => this.onClickOutside(e)}>
         <div className="modal">
           <div className="modalHeader">
             Klingeln bei {this.props.user.firstName}
           </div>
-          <button onClick={this.cancelRing}>zurück</button>
-          <div className="messageContainer">
-            <textarea className="messageInput" value={this.state.inputValue} onChange={evt => this.updateInputValue(evt)}/>
+          <div className="modalBody">
+            <textarea className="messageArea" maxLength="100" value={this.state.inputValue} onChange={evt => this.updateInputValue(evt)}/>
           </div>
           <div className="modalFooter">
-            Speichern
+            <div className="cancelButton" onClick={this.cancelRing}>
+              Abbrechen
+            </div>
+            <div className="sendButton">
+              Senden
+            </div>
           </div>
         </div>
       </div>
