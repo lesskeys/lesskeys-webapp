@@ -1,29 +1,44 @@
 import React, {Component} from 'react';
 import './style/List.css';
+import Modal from './Modal.js';
 
 class List extends Component {
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      isOpen: false,
+      chosenUser: null
+    }
+  }
+
+  toggleModal = (user) => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+      chosenUser: user
+    });
+  }
 
   render () {
 
-    if (!this.props.show) {
-      return null;
-    }
-
     const rows = this.props.users.map(u => {
       return ([
-        <div class="listItemName">
+        <div className="listItemName">
           {u.firstName}
         </div>, 
-        <div class="listItemButton">
-          <button class="ringButton" onClick={() => this.props.ring(u)}>klingeln</button>
+        <div className="listItemButton">
+          <button className="ringButton" onClick={() => this.toggleModal(u)}>klingeln</button>
         </div>,
-        <div class="listSeparator"/>
+        <div className="listSeparator"/>
       ]);
     })
 
     return (
-      <div class="listContainer">
-        {rows}
+      <div>
+        <div className="listContainer">
+          {rows}
+        </div>
+        <Modal show={this.state.isOpen} user={this.state.chosenUser} cancel={this.toggleModal}/>
       </div>
     )
   }

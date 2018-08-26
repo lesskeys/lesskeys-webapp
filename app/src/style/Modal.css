@@ -1,0 +1,46 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal {
+  position: fixed;
+  display: block;
+  background: white;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  max-width: 50em;
+  max-height: 25em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modalHeader {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+  background-color: lightslategrey;
+}
+
+.modalFooter {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 0 0 5px 5px;
+  text-align: center;
+  background-color: lightslategray;
+}
+
+.modalFooter:hover {
+  background-color: green;
+}
