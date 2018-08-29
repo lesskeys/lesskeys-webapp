@@ -13,6 +13,12 @@ class App extends Component {
     }
   }
 
+  updateLoggedIn = () => {
+    this.setState({
+      isLoggedIn: true
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -24,7 +30,7 @@ class App extends Component {
               <Redirect to="/login" />
             )
           )} />
-          <Route path='/login' component={Login} />
+          <Route path='/login' render={() => <Login loginFunction={this.updateLoggedIn} />} />
           <Route path='/ring' render={() => (
             this.state.isLoggedIn ? (
               <Ring/>
