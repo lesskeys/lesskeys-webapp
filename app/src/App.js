@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import './style/App.css';
 import Login from './Login';
+import LoginAdmin from './LoginAdmin'
 import Ring from './Ring';
 
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
             )
           )} />
           <Route path='/login' render={() => <Login loginFunction={this.updateLoggedIn} />} />
+          <Route path='/admin' render={() => <LoginAdmin loginFunction={this.updateLoggedIn} />} />
           <Route path='/ring' render={() => (
             this.state.isLoggedIn ? (
               <Ring/>

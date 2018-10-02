@@ -17,7 +17,7 @@
   background: white;
   width: 100%;
   max-width: 15em;
-  max-height: 20em;
+  max-height: 30em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -42,7 +42,7 @@
   color: gray;
 }
 
-.form input[type=text] {
+.form input[type=text], input[type=password] {
   width: 100%;
   display: inline-block;
   padding: 12px 20px;
@@ -52,12 +52,16 @@
   background-color: rgba(211, 211, 211, 0.20);
 }
 
+.form input[type=text]:focus, input[type=password]:focus {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .form input[type=submit] {
   width: 60%;
   background-color: #1fa6ff;
   color: white;
   padding: 14px 0;
-  margin: 40px 0 10px;
+  margin: 40px 0 0px;
   cursor: pointer;
   border: none;
   border-radius: 2px;
