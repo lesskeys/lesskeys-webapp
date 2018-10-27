@@ -39,7 +39,7 @@ class LoginAdmin extends Component {
 
   onFormSubmit = () => {
     this.props.loginFunction()
-    if (this.state.admin === 'admin') {
+    if (this.state.username === 'admin') {
       this.setState({
         isSubmitted: true
       })
