@@ -1,35 +1,48 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import './style/App.css';
-import Header from './Header';
-import List from './List';
+import Login from './Login';
+import LoginAdmin from './LoginAdmin'
+import Ring from './Ring';
 
 class App extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      isLoading: true,
-      users: []
-    };
+      isLoggedIn: false
+    }
   }
 
-  async componentDidMount() {
-    const response = await fetch('/ring/list');
-    const list = await response.json();
-    this.setState({ users: list, isLoading: false});
+  updateLoggedIn = () => {
+    this.setState({
+      isLoggedIn: true
+    })
   }
 
   render() {
-    
-    if (this.state.isLoading) {
-      return <p>Loading...</p>
-    }
-
     return (
-      <div className="App">
-        <Header/>
-        <List users={this.state.users} show={this.state.isList}/>
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path='/' render={() => (
+            this.state.isLoggedIn ? (
+              <Redirect to="/ring" />
+            ) : (
+              <Redirect to="/login" />
+            )
+          )} />
+          <Route path='/login' render={() => <Login loginFunction={this.updateLoggedIn} />} />
+          <Route path='/admin' render={() => <LoginAdmin loginFunction={this.updateLoggedIn} />} />
+          <Route path='/ring' render={() => (
+            this.state.isLoggedIn ? (
+              <Ring/>
+            ) : (
+              <Redirect to="/login" />
+            )
+          )} />
+          {/* <Route component={PageNotFound} /> */}
+        </Switch>
+      </Router>
     );
   }
 }
