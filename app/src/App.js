@@ -4,6 +4,7 @@ import './style/App.css';
 import Login from './Login';
 import LoginAdmin from './LoginAdmin'
 import Ring from './Ring';
+import AdminInterface from './AdminInterface';
 
 class App extends Component {
   constructor (props) {
@@ -38,6 +39,14 @@ class App extends Component {
               <Ring/>
             ) : (
               <Redirect to="/login" />
+            )
+          )} />
+          <Route path='/ai' render={() => (
+            this.state.isLoggedIn ? (
+              <AdminInterface/>
+            ) : (
+              //<Redirect to="/admin" />
+              <AdminInterface/>
             )
           )} />
           {/* <Route component={PageNotFound} /> */}

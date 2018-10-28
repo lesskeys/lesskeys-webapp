@@ -55,7 +55,7 @@ class LoginAdmin extends Component {
   render () {
 
     if (this.state.isSubmitted) {
-      return <Redirect to="/ring" />
+      return <Redirect to="/ai" />
     }
 
     return (
