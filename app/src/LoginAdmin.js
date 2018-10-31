@@ -37,19 +37,32 @@ class LoginAdmin extends Component {
     })
   }
 
+  async checkCreds () {
+    const response = await fetch('/ai/login', {
+      method: 'post',
+      body: {
+        "username": this.state.username,
+        "password": this.state.password
+      }
+    })
+    response.text().then((text) => {
+      if (text === 'true') {
+        this.setState({
+          isSubmitted: true
+        })
+      } else {
+        this.setState({
+          isWrong: true,
+          admin: '',
+          password: ''
+        })
+      }
+    })
+  }
+
   onFormSubmit = () => {
     this.props.loginFunction()
-    if (this.state.username === 'admin') {
-      this.setState({
-        isSubmitted: true
-      })
-    } else {
-      this.setState({
-        isWrong: true,
-        admin: '',
-        password: ''
-      })
-    }
+    this.checkCreds()
   }
 
   render () {
