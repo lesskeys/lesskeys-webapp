@@ -4,7 +4,7 @@ import './style/App.css';
 import Login from './Login';
 import LoginAdmin from './LoginAdmin'
 import Ring from './Ring';
-import AdminInterface from './AdminInterface';
+import AILocks from './AILocks';
 
 class App extends Component {
   constructor (props) {
@@ -43,10 +43,10 @@ class App extends Component {
           )} />
           <Route path='/ai' render={() => (
             this.state.isLoggedIn ? (
-              <AdminInterface/>
+              <AILocks/>
             ) : (
               //<Redirect to="/admin" />
-              <AdminInterface/>
+              <AILocks/>
             )
           )} />
           {/* <Route component={PageNotFound} /> */}

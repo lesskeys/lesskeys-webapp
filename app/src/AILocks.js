@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './style/AILocks.css';
 import Sidebar from './Sidebar';
+import Lock from './Lock';
 
-class AdminInterface extends Component {
+class AILocks extends Component {
   constructor (props) {
     super(props);
 
@@ -22,14 +23,7 @@ class AdminInterface extends Component {
     
     const lockList = this.state.locks.map(l => {
       return ([
-        <div className="lockContainer">
-          <div className="lockItemName">
-            {l.name}
-          </div>
-          <div className="lockItemIp">
-            {l.address}
-          </div>
-        </div>
+        <Lock data={l} />
       ])
     })
     
@@ -44,4 +38,4 @@ class AdminInterface extends Component {
   }
 }
 
-export default AdminInterface;
+export default AILocks;
