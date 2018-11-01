@@ -37,16 +37,20 @@ class LoginAdmin extends Component {
     })
   }
 
-  async checkCreds () {
-    const response = await fetch('/ai/login', {
+  onFormSubmit = () => {
+    fetch('/ai/login', {
       method: 'post',
-      body: {
-        "username": this.state.username,
-        "password": this.state.password
-      }
-    })
-    response.text().then((text) => {
-      if (text === 'true') {
+      headers: {
+        "Content-Type": "application/json; charset-UTF-8"
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    }).then((response) => {
+      return response.json();
+    }).then((data) => {
+      if (data.value === 'true') {
         this.setState({
           isSubmitted: true
         })
@@ -58,11 +62,6 @@ class LoginAdmin extends Component {
         })
       }
     })
-  }
-
-  onFormSubmit = () => {
-    this.props.loginFunction()
-    this.checkCreds()
   }
 
   render () {
