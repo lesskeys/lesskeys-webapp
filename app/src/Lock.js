@@ -32,6 +32,26 @@ class Lock extends Component {
     })
   }
 
+  saveLock = () => {
+    fetch('/ai/' + this.state.data.lockId + '/edit', {
+      method: 'post',
+      headers: {
+        "Content-Type": "application/json; charset-UTF-8"
+      },
+      body: JSON.stringify({
+        name: this.state.name,
+        address: this.state.ip
+      })
+    }).then((response) => {
+      return response.json();
+    }).then((data) => {
+      if (!data.value === 'true') {
+        this.props.error()
+      }
+    })
+    this.toggleEditable()
+  }
+
   render () {
 
     if (this.state.inEditMode) {
@@ -47,7 +67,7 @@ class Lock extends Component {
             <div className="abort" onClick={this.toggleEditable}>
               <FontAwesome.FaTimes className="icon" />
             </div>
-            <div className="save" onClick={this.toggleEditable}>
+            <div className="save" onClick={this.saveLock}>
               <FontAwesome.FaCheck className="icon" />
             </div>
           </div>
@@ -56,18 +76,18 @@ class Lock extends Component {
     } else {
       return (
         <div className="lockContainer">
-            <div className="lockItemName">
-              {this.state.name}
-            </div>
-            <div className="lockItemIp">
-              {this.state.ip}
-            </div>
-            <div className="lockItemButtonContainer">
-              <div className="edit" onClick={this.toggleEditable}>
-                <FontAwesome.FaPen className="icon" />
-              </div>
+          <div className="lockItemName">
+            {this.state.name}
+          </div>
+          <div className="lockItemIp">
+            {this.state.ip}
+          </div>
+          <div className="lockItemButtonContainer">
+            <div className="edit" onClick={this.toggleEditable}>
+              <FontAwesome.FaPen className="icon" />
             </div>
           </div>
+        </div>
       )
     }
   }

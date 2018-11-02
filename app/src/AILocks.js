@@ -3,14 +3,34 @@ import './style/AILocks.css';
 import Sidebar from './Sidebar';
 import Lock from './Lock';
 
+const Failure = (props) => {
+  if (!props.show) {
+    return null
+  }
+  return (
+    <div className="failure">
+      <div className="text">
+        Änderungen haben nicht funktioniert!
+      </div>
+    </div>
+  )
+}
+
 class AILocks extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
       isLoading: true,
-      locks: []
+      locks: [],
+      error: false
     }
+  }
+
+  showError = () => {
+    this.setState({
+      error: true
+    })
   }
   
   async componentDidMount() {
@@ -23,7 +43,7 @@ class AILocks extends Component {
     
     const lockList = this.state.locks.map(l => {
       return ([
-        <Lock data={l} />
+        <Lock data={l} error={this.showError} />
       ])
     })
     
@@ -31,6 +51,7 @@ class AILocks extends Component {
       <div>
         <Sidebar/>
         <div className="mainAI">
+          <Failure show={this.state.error} />
           {lockList}
         </div>
       </div>

@@ -90,3 +90,23 @@
   color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.failure {
+  width: 100%;
+  height: 50px;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 10px 10px 10px;
+  margin: 25px;
+  border: 2px solid darkred;
+  border-radius: 5px;
+  background-color: lightcoral;
+}
+
+.failure .text {
+  grid-column: 1;
+  justify-self: center;
+  align-self: center;
+  color: darkred;
+}
