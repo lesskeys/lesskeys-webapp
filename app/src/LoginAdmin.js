@@ -80,11 +80,11 @@ class LoginAdmin extends Component {
             <WrongInput show={this.state.isWrong} />
             <label>
               Benutzername
-              <input type="text" placeholder="Benutzername" value={this.state.code} onChange={(e) => this.updateUsernameValue(e)} />
+              <input type="text" placeholder="Benutzername" value={this.state.username} onChange={(e) => this.updateUsernameValue(e)} />
             </label>
             <label>
               Passwort
-              <input type="password" placeholder="Passwort" value={this.state.code} onChange={(e) => this.updatePasswordValue(e)} />
+              <input type="password" placeholder="Passwort" value={this.state.password} onChange={(e) => this.updatePasswordValue(e)} />
             </label>
             <input type="submit" value="Senden" onClick={this.onFormSubmit} />
           </div>
