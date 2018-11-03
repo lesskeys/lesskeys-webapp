@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import './style/Login.css';
+import * as FontAwesome from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 const WrongInput = (props) => {
   if (!props.show) {
@@ -9,6 +11,16 @@ const WrongInput = (props) => {
   return (
     <div className="wrongInput">
       Benutzername oder Passwort ist falsch!
+    </div>
+  )
+}
+
+const LoginLink = () => {
+  return (
+    <div className="loginLink">
+      <NavLink to='login' className="navlink" >
+        <FontAwesome.FaArrowLeft className="icon" />
+      </NavLink>
     </div>
   )
 }
@@ -74,6 +86,7 @@ class LoginAdmin extends Component {
 
     return (
       <div className="background">
+        <LoginLink/>
         <div className="center">
           <div className="head">
             Admin Login
