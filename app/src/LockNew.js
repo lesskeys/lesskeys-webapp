@@ -19,6 +19,46 @@ class NewLock extends Component {
     })
   }
 
+  updateName (evt) {
+    this.setState({
+      name: evt.target.value
+    })
+  }
+
+  updateIp (evt) {
+    this.setState({
+      ip: evt.target.value
+    })
+  }
+
+  addNewLock = () => {
+    fetch('/ai/add-lock', {
+      method: 'post',
+      headers: {
+        "Content-Type": "application/json; charset-UTF-8"
+      },
+      body: JSON.stringify({
+        userId: '1',
+        name: this.state.name,
+        address: this.state.ip,
+        code: 'code'
+      })
+    }).then((response) => {
+      return response.json();
+    }).then((data) => {
+      if (!data.value === 'true') {
+        this.props.error()
+      } else {
+        this.props.reload()
+        this.toggleCreating()
+        this.setState({
+          name: '',
+          ip: ''
+        })
+      }
+    })
+  }
+
   render () {
     if (!this.state.creating) {
       return (
@@ -41,7 +81,7 @@ class NewLock extends Component {
             <div className="abort" onClick={this.toggleCreating}>
               <FontAwesome.FaTimes className="icon" />
             </div>
-            <div className="save" onClick={this.toggleCreating}>
+            <div className="save" onClick={this.addNewLock}>
               <FontAwesome.FaCheck className="icon" />
             </div>
           </div>

@@ -17,6 +17,19 @@ const Failure = (props) => {
   )
 }
 
+const NewLockNotification = (props) => {
+  if (!props.show) {
+    return null
+  }
+  return (
+    <div className="notification">
+      <div className="text">
+        Neues Türschloss wurde hinzugefügt!
+      </div>
+    </div>
+  )
+}
+
 class AILocks extends Component {
   constructor (props) {
     super(props);
@@ -24,8 +37,15 @@ class AILocks extends Component {
     this.state = {
       isLoading: true,
       locks: [],
-      error: false
+      error: false,
+      lockAdded: false
     }
+  }
+
+  async componentDidMount() {
+    const response = await fetch('/ai/locks');
+    const list = await response.json();
+    this.setState({ locks: list, isLoading: false});
   }
 
   showError = () => {
@@ -33,11 +53,12 @@ class AILocks extends Component {
       error: true
     })
   }
-  
-  async componentDidMount() {
-    const response = await fetch('/ai/locks');
-    const list = await response.json();
-    this.setState({ locks: list, isLoading: false});
+
+  newLockAdded = () => {
+    this.componentDidMount()
+    this.setState({
+      lockAdded: true
+    })
   }
   
   render () {
@@ -53,8 +74,9 @@ class AILocks extends Component {
         <Sidebar/>
         <div className="mainAI">
           <Failure show={this.state.error} />
+          <NewLockNotification show={this.state.lockAdded} />
           {lockList}
-          <NewLock />
+          <NewLock error={this.showError} reload={this.newLockAdded} />
         </div>
       </div>
     )
