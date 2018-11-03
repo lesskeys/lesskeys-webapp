@@ -38,7 +38,7 @@ class NewLock extends Component {
         "Content-Type": "application/json; charset-UTF-8"
       },
       body: JSON.stringify({
-        userId: '1',
+        userId: this.props.user.userId,
         name: this.state.name,
         address: this.state.ip,
         code: 'code'

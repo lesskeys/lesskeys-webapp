@@ -76,7 +76,7 @@ class AILocks extends Component {
           <Failure show={this.state.error} />
           <NewLockNotification show={this.state.lockAdded} />
           {lockList}
-          <NewLock error={this.showError} reload={this.newLockAdded} />
+          <NewLock error={this.showError} reload={this.newLockAdded} user={this.props.user} />
         </div>
       </div>
     )

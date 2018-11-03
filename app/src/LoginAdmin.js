@@ -51,9 +51,11 @@ class LoginAdmin extends Component {
       return response.json();
     }).then((data) => {
       if (data.value === 'true') {
+        this.props.loginFunction()
         this.setState({
           isSubmitted: true
         })
+        this.props.setUser(data.user)
       } else {
         this.setState({
           isWrong: true,

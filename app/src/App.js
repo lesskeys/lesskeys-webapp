@@ -11,13 +11,20 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
+      user: null
     }
   }
 
   updateLoggedIn = () => {
     this.setState({
       isLoggedIn: true
+    })
+  }
+
+  setUser = (u) => {
+    this.setState({
+      user: u
     })
   }
 
@@ -33,7 +40,7 @@ class App extends Component {
             )
           )} />
           <Route path='/login' render={() => <Login loginFunction={this.updateLoggedIn} />} />
-          <Route path='/admin' render={() => <LoginAdmin loginFunction={this.updateLoggedIn} />} />
+          <Route path='/admin' render={() => <LoginAdmin loginFunction={this.updateLoggedIn} setUser={this.setUser} />} />
           <Route path='/ring' render={() => (
             this.state.isLoggedIn ? (
               <Ring/>
@@ -43,10 +50,9 @@ class App extends Component {
           )} />
           <Route path='/ai' render={() => (
             this.state.isLoggedIn ? (
-              <AILocks/>
+              <AILocks user={this.state.user} />
             ) : (
-              //<Redirect to="/admin" />
-              <AILocks/>
+              <Redirect to="/admin" />
             )
           )} />
           {/* <Route component={PageNotFound} /> */}
