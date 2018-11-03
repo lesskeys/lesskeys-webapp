@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style/AILocks.css';
 import Sidebar from './Sidebar';
 import Lock from './Lock';
+import NewLock from './LockNew';
 
 const Failure = (props) => {
   if (!props.show) {
@@ -53,6 +54,7 @@ class AILocks extends Component {
         <div className="mainAI">
           <Failure show={this.state.error} />
           {lockList}
+          <NewLock />
         </div>
       </div>
     )

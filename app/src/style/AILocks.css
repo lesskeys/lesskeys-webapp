@@ -110,3 +110,25 @@
   align-self: center;
   color: darkred;
 }
+
+.plainContainer {
+  width: 100%;
+  height: 100px;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: auto;
+  margin-left: 25px;
+}
+
+.newLockButtonContainer {
+  grid-column: 1;
+  justify-self: center;
+  align-self: center;
+}
+
+.newLockButtonContainer .icon {
+  height: 30px;
+  width: 30px;
+  color: lightslategray;
+  cursor: pointer;
+}
