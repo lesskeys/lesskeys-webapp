@@ -5,6 +5,7 @@ import Login from './Login';
 import LoginAdmin from './LoginAdmin'
 import Ring from './Ring';
 import AILocks from './AILocks';
+import AILog from './AILog';
 
 class App extends Component {
   constructor (props) {
@@ -51,6 +52,13 @@ class App extends Component {
           <Route path='/ai' render={() => (
             this.state.isLoggedIn ? (
               <AILocks user={this.state.user} />
+            ) : (
+              <Redirect to="/admin" />
+            )
+          )} />
+          <Route path='/ai-log' render={() => (
+            this.state.isLoggedIn || true ? (
+              <AILog user={this.state.user} />
             ) : (
               <Redirect to="/admin" />
             )
