@@ -29,6 +29,20 @@ class Modal extends Component {
     });
   }
 
+  sendRingMessage = () => {
+    fetch('/ring/send', {
+      method: 'put',
+      headers: {
+        "Content-Type": "application/json; charset-UTF-8"
+      },
+      body: JSON.stringify({
+        userId: this.props.user.userId,
+        message: this.state.inputValue
+      })
+    })
+    this.cancelRing()
+  }
+
   render () {
 
     if (!this.props.show) {
@@ -48,7 +62,7 @@ class Modal extends Component {
             <div className="cancelButton" onClick={this.cancelRing}>
               Abbrechen
             </div>
-            <div className="sendButton">
+            <div className="sendButton" onClick={this.sendRingMessage}>
               Senden
             </div>
           </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './style/AILog.css';
-import * as FontAwesome from 'react-icons/fa';
 
 class Log extends Component {
   constructor (props) {
