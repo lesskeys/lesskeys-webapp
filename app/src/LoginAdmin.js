@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import './style/Login.css';
+import * as FontAwesome from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 const WrongInput = (props) => {
   if (!props.show) {
@@ -9,6 +11,16 @@ const WrongInput = (props) => {
   return (
     <div className="wrongInput">
       Benutzername oder Passwort ist falsch!
+    </div>
+  )
+}
+
+const LoginLink = () => {
+  return (
+    <div className="loginLink">
+      <NavLink to='login' className="navlink" >
+        <FontAwesome.FaArrowLeft className="icon" />
+      </NavLink>
     </div>
   )
 }
@@ -38,28 +50,43 @@ class LoginAdmin extends Component {
   }
 
   onFormSubmit = () => {
-    this.props.loginFunction()
-    if (this.state.username === 'admin') {
-      this.setState({
-        isSubmitted: true
+    fetch('/ai/login', {
+      method: 'post',
+      headers: {
+        "Content-Type": "application/json; charset-UTF-8"
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
       })
-    } else {
-      this.setState({
-        isWrong: true,
-        admin: '',
-        password: ''
-      })
-    }
+    }).then((response) => {
+      return response.json();
+    }).then((data) => {
+      if (data.value === 'true') {
+        this.props.loginFunction()
+        this.setState({
+          isSubmitted: true
+        })
+        this.props.setUser(data.user)
+      } else {
+        this.setState({
+          isWrong: true,
+          admin: '',
+          password: ''
+        })
+      }
+    })
   }
 
   render () {
 
     if (this.state.isSubmitted) {
-      return <Redirect to="/ring" />
+      return <Redirect to="/ai" />
     }
 
     return (
       <div className="background">
+        <LoginLink/>
         <div className="center">
           <div className="head">
             Admin Login
@@ -68,11 +95,11 @@ class LoginAdmin extends Component {
             <WrongInput show={this.state.isWrong} />
             <label>
               Benutzername
-              <input type="text" placeholder="Benutzername" value={this.state.code} onChange={(e) => this.updateUsernameValue(e)} />
+              <input type="text" placeholder="Benutzername" value={this.state.username} onChange={(e) => this.updateUsernameValue(e)} />
             </label>
             <label>
               Passwort
-              <input type="password" placeholder="Passwort" value={this.state.code} onChange={(e) => this.updatePasswordValue(e)} />
+              <input type="password" placeholder="Passwort" value={this.state.password} onChange={(e) => this.updatePasswordValue(e)} />
             </label>
             <input type="submit" value="Senden" onClick={this.onFormSubmit} />
           </div>

@@ -1,0 +1,32 @@
+.sidebar {
+  height: 100%;
+  width: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: lightslategray;
+  overflow-x: hidden;
+  padding-top: 25px;
+}
+
+.sidebar div {
+  padding-bottom: 25px;
+}
+
+.sidebar .logo {
+  height: 30px;
+  width: 30px;
+  padding-left: 10px;
+}
+
+.sidebar .element {
+  height: 30px;
+  width: 30px;
+  padding-left: 10px;
+  color: whitesmoke; 
+}
+
+.sidebar .element:hover {
+  color: white;
+  cursor: pointer;
+}

@@ -27,7 +27,7 @@ class Ring extends Component {
     return (
       <div className="App">
         <Header/>
-        <List users={this.state.users} show={this.state.isList}/>
+        <List users={this.state.users} show={this.state.isList} />
       </div>
     )
   }
