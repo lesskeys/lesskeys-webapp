@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './style/AILocks.css';
+import '../style/AILocks.css';
 import * as FontAwesome from 'react-icons/fa';
 
 class NewLock extends Component {

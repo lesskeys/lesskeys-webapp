@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import './style/Login.css';
+import '../style/Login.css';
 import * as FontAwesome from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
-import store from './store';
-import userAction from './actions/user-action'
+import store from '../store';
+import userAction from '../actions/user-action'
 
 const WrongInput = (props) => {
   if (!props.show) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-import './style/App.css'
+import '../style/App.css'
 import Login from './Login'
 import LoginAdmin from './LoginAdmin'
 import Ring from './Ring'

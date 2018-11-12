@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import './style/AILocks.css'
+import '../style/AILocks.css'
 import Sidebar from './Sidebar'
 import Lock from './Lock'
 import NewLock from './LockNew'

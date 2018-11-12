@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as FontAwesome from 'react-icons/fa';
-import './style/Sidebar.css';
+import '../style/Sidebar.css';
 import { NavLink } from 'react-router-dom';
 
 class Sidebar extends Component {

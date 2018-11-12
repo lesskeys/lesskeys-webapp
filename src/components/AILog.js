@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import './style/AILog.css'
+import '../style/AILog.css'
 import Sidebar from './Sidebar'
 import Log from './Log'
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style/AILog.css';
+import '../style/AILog.css';
 
 class Log extends Component {
   constructor (props) {

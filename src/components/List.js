@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './style/List.css';
+import '../style/List.css';
 import Modal from './Modal.js';
 
 class List extends Component {

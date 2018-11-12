@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import './style/Login.css';
+import '../style/Login.css';
 import * as FontAwesome from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style/AILocks.css';
+import '../style/AILocks.css';
 import * as FontAwesome from 'react-icons/fa';
 
 class Lock extends Component {
