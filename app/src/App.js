@@ -1,32 +1,22 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import './style/App.css';
-import Login from './Login';
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import './style/App.css'
+import Login from './Login'
 import LoginAdmin from './LoginAdmin'
-import Ring from './Ring';
-import AILocks from './AILocks';
-import AILog from './AILog';
+import Ring from './Ring'
+import AILocks from './AILocks'
+import AILog from './AILog'
+import store from './store'
 
 class App extends Component {
   constructor (props) {
     super(props);
 
-    this.state = {
-      isLoggedIn: false,
-      user: null
-    }
+    this.state = store.getState();
   }
 
-  updateLoggedIn = () => {
-    this.setState({
-      isLoggedIn: true
-    })
-  }
-
-  setUser = (u) => {
-    this.setState({
-      user: u
-    })
+  isLoggedIn = () => {
+    return this.state.user == null
   }
 
   render() {
@@ -34,30 +24,22 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path='/' render={() => (
-            this.state.isLoggedIn ? (
-              <Redirect to="/ring" />
-            ) : (
               <Redirect to="/login" />
-            )
           )} />
-          <Route path='/login' render={() => <Login loginFunction={this.updateLoggedIn} />} />
-          <Route path='/admin' render={() => <LoginAdmin loginFunction={this.updateLoggedIn} setUser={this.setUser} />} />
+          <Route path='/login' render={() => <Login/>} />
+          <Route path='/admin' render={() => <LoginAdmin/>} />
           <Route path='/ring' render={() => (
-            this.state.isLoggedIn ? (
-              <Ring/>
-            ) : (
               <Redirect to="/login" />
-            )
           )} />
           <Route path='/ai' render={() => (
-            this.state.isLoggedIn || true ? (
+            this.state.isLoggedIn ? (
               <AILocks user={this.state.user} />
             ) : (
               <Redirect to="/admin" />
             )
           )} />
           <Route path='/ai-log' render={() => (
-            this.state.isLoggedIn || true ? (
+            this.state.isLoggedIn ? (
               <AILog user={this.state.user} />
             ) : (
               <Redirect to="/admin" />

@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import './style/Login.css';
 import * as FontAwesome from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+import store from './store';
+import userAction from './actions/user-action'
 
 const WrongInput = (props) => {
   if (!props.show) {
@@ -63,11 +65,12 @@ class LoginAdmin extends Component {
       return response.json();
     }).then((data) => {
       if (data.value === 'true') {
-        this.props.loginFunction()
         this.setState({
           isSubmitted: true
         })
-        this.props.setUser(data.user)
+        store.dispatch(userAction( 'GET_USER', {
+          'user': data.user
+        }))
       } else {
         this.setState({
           isWrong: true,

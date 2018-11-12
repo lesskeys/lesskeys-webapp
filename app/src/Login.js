@@ -43,7 +43,6 @@ class Login extends Component {
   }
 
   onFormSubmit = () => {
-    this.props.loginFunction()
     if (this.state.code === 'code') {
       this.setState({
         isSubmitted: true
