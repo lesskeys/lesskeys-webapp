@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import './style/AILocks.css';
-import Sidebar from './Sidebar';
-import Lock from './Lock';
-import NewLock from './LockNew';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import './style/AILocks.css'
+import Sidebar from './Sidebar'
+import Lock from './Lock'
+import NewLock from './LockNew'
 
 const Failure = (props) => {
   if (!props.show) {
@@ -76,11 +77,17 @@ class AILocks extends Component {
           <Failure show={this.state.error} />
           <NewLockNotification show={this.state.lockAdded} />
           {lockList}
-          <NewLock error={this.showError} reload={this.newLockAdded} user={this.props.user} />
+          <NewLock error={this.showError} reload={this.newLockAdded} />
         </div>
       </div>
     )
   }
 }
 
-export default AILocks;
+const mapStateToProps = (store) => {
+  return {
+    user: store.userReducer.user,
+  }
+}
+
+export default connect(mapStateToProps)(AILocks);

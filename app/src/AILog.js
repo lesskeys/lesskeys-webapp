@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import './style/AILog.css';
-import Sidebar from './Sidebar';
-import Log from './Log';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import './style/AILog.css'
+import Sidebar from './Sidebar'
+import Log from './Log'
 
 class AILog extends Component {
   constructor (props) {
@@ -46,4 +47,10 @@ class AILog extends Component {
   }
 }
 
-export default AILog;
+const mapStateToProps = (store) => {
+  return {
+    user: store.userReducer.user,
+  }
+}
+
+export default connect(mapStateToProps)(AILog);

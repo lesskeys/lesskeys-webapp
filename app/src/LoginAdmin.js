@@ -65,12 +65,12 @@ class LoginAdmin extends Component {
       return response.json();
     }).then((data) => {
       if (data.value === 'true') {
-        this.setState({
-          isSubmitted: true
-        })
         store.dispatch(userAction( 'GET_USER', {
           'user': data.user
         }))
+        this.setState({
+          isSubmitted: true
+        })
       } else {
         this.setState({
           isWrong: true,

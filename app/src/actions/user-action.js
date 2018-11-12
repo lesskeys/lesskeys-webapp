@@ -1,9 +1,9 @@
-const userAction = (type, user) => {
+const userAction = (type, action) => {
   switch (type) {
     case 'GET_USER':
       return {
         type: 'GET_USER',
-        user: user,
+        user: action.user,
       }
     case 'REMOVE_USER':
       return {

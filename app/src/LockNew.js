@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './style/AILocks.css';
 import * as FontAwesome from 'react-icons/fa';
 
@@ -91,4 +92,10 @@ class NewLock extends Component {
   }
 }
 
-export default NewLock;
+const mapStateToProps = (store) => {
+  return {
+    user: store.userReducer.user,
+  }
+}
+
+export default connect(mapStateToProps)(NewLock);
