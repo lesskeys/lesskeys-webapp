@@ -32,7 +32,7 @@ class AILog extends Component {
 
     const logList = this.state.log.map(l => {
       return ([
-        <Log data={l} />
+        <Log key={this.state.log.indexOf(l)} data={l} />
       ])
     })
 

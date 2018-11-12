@@ -66,7 +66,7 @@ class AILocks extends Component {
     
     const lockList = this.state.locks.map(l => {
       return ([
-        <Lock data={l} error={this.showError} />
+        <Lock key={l.lockId} data={l} error={this.showError} />
       ])
     })
     
