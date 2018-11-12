@@ -1,4 +1,5 @@
 const userAction = (type, action) => {
+  // eslint-disable-next-line
   switch (type) {
     case 'GET_USER':
       return {
