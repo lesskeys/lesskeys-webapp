@@ -5,8 +5,8 @@ import '../style/App.css'
 import Login from './Login'
 import LoginAdmin from './LoginAdmin'
 import Ring from './Ring'
-import AILocks from './AILocks'
-import AILog from './AILog'
+import AILocks from './admin/AILocks'
+import AILog from './admin/AILog'
 
 class App extends Component {
 
