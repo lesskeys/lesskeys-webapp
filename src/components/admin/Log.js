@@ -12,13 +12,22 @@ class Log extends Component {
 
   render () {
 
+    var event = new Date(this.props.data.logTime);
+    var options = { year: 'numeric', month: 'numeric', day: 'numeric' , hour: 'numeric' , minute: 'numeric' };
+
     return (
       <div className="logContainer">
         <div className="logItemDate">
-          {this.props.data.logTime.slice(0, -1).split('T')[0]}
+          {event.toLocaleDateString('de-DE', options)}
+        </div>
+        <div className="logItemType">
+          {this.props.data.type}
         </div>
         <div className="logItemEvent">
           {this.props.data.event}
+        </div>
+        <div className="logItemActor">
+          {this.props.data.actor}
         </div>
       </div>
     )
