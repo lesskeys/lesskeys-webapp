@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import '../../style/AILog.css'
+import 'react-datepicker/dist/react-datepicker.css'
 import Sidebar from './Sidebar'
 import Log from './Log'
+import DatePicker from 'react-datepicker'
 
 class AILog extends Component {
   constructor (props) {
@@ -10,8 +12,10 @@ class AILog extends Component {
 
     this.state = {
       isLoading: true,
-      log: []
+      log: [],
+      startDate: new Date()
     }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   async componentDidMount() {
@@ -28,11 +32,17 @@ class AILog extends Component {
     this.setState({ log: list, isLoading: false});
   }
 
+  handleChange(date) {
+    this.setState({
+      startDate: date
+    });
+  }
+
   render () {
 
     const logList = this.state.log.map(l => {
       return ([
-        <Log key={this.state.log.indexOf(l)} data={l} />
+        <Log key={this.state.log.indexOf(l)} data={l} filter={this.state.startDate}/>
       ])
     })
 
@@ -40,6 +50,10 @@ class AILog extends Component {
       <div>
         <Sidebar/>
         <div className="mainAI">
+          <div className="filterSection">
+            <DatePicker className="filterDate" selected={this.state.startDate} onChange={this.handleChange}/>
+          </div>
+          <div className="seperator"/>
           {logList}
         </div>
       </div>

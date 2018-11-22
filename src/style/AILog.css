@@ -5,10 +5,10 @@
 .logContainer {
   width: 100%;
   height: 20px;
-  max-width: 800px;
+  max-width: 900px;
+  min-width: 600px;
   display: grid;
-  grid-template-columns: 25% 10% 45% 10%;
-  grid-gap: 5px;
+  grid-template-columns: 25% 15% 50% 10%;
   margin: 5px;
   border: 2px solid silver;
   border-radius: 5px;
@@ -17,24 +17,56 @@
 
 .logItemDate {
   grid-column: 1;
-  justify-self: center;
-  align-self: left;
+  padding-left: 5px;
+  justify-self: left;
+  align-self: center;
 }
 
 .logItemType {
   grid-column: 2;
-  justify-self: center;
-  align-self: left;
+  justify-self: left;
+  align-self: center;
 }
 
 .logItemEvent {
   grid-column: 3;
-  justify-self: center;
-  align-self: left;
+  justify-self: left;
+  align-self: center;
 }
 
 .logItemActor {
   grid-column: 4;
-  justify-self: center;
-  align-self: left;
+  justify-self: left;
+  align-self: center;
+}
+
+.seperator {
+  width: 100%;
+  max-width: 900px;
+  min-width: 600px;
+  height: 5px;
+  margin: 5px;
+  border: 1px solid silver;
+  border-radius: 5px;
+  background-color: lightslategray;
+}
+
+.filterSection {
+  width: 100%;
+  max-width: 900px;
+  min-width: 600px;
+  margin: 5px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.filterDate {
+  grid-column: 1;
+  border: 2px solid silver;
+  border-radius: 5px;
+}
+
+.filterDate:focus {
+  outline: none;
+  border: 2px solid lightslategray;
 }

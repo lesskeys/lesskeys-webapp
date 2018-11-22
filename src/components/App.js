@@ -37,7 +37,8 @@ class App extends Component {
             this.isLoggedIn() ? (
               <AILog/>
             ) : (
-              <Redirect to="/admin" />
+              <AILog/>
+              //<Redirect to="/admin" />
             )
           )} />
           {/* <Route component={PageNotFound} /> */}

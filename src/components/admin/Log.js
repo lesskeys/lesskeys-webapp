@@ -15,6 +15,12 @@ class Log extends Component {
     var event = new Date(this.props.data.logTime);
     var options = { year: 'numeric', month: 'numeric', day: 'numeric' , hour: 'numeric' , minute: 'numeric' };
 
+    if (!(event.getFullYear() === this.props.filter.getFullYear() &&
+        event.getMonth() === this.props.filter.getMonth() &&
+        event.getDate() === this.props.filter.getDate())) {
+      return null
+    }
+
     return (
       <div className="logContainer">
         <div className="logItemDate">
