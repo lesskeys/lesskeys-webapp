@@ -57,16 +57,25 @@
   min-width: 600px;
   margin: 5px;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 100px 100px auto;
+  grid-gap: 10px;
 }
 
 .filterDate {
   grid-column: 1;
+  height: 32px;
   border: 2px solid silver;
   border-radius: 5px;
+  max-width: 100px;
 }
 
 .filterDate:focus {
   outline: none;
   border: 2px solid lightslategray;
+}
+
+.filterType {
+  grid-column: 2;
+  font-size: 12px;
+  max-width: 100px;
 }

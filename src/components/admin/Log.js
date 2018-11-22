@@ -15,9 +15,11 @@ class Log extends Component {
     var event = new Date(this.props.data.logTime);
     var options = { year: 'numeric', month: 'numeric', day: 'numeric' , hour: 'numeric' , minute: 'numeric' };
 
-    if (!(event.getFullYear() === this.props.filter.getFullYear() &&
-        event.getMonth() === this.props.filter.getMonth() &&
-        event.getDate() === this.props.filter.getDate())) {
+    if (!(event.getFullYear() === this.props.filter.date.getFullYear() &&
+        event.getMonth() === this.props.filter.date.getMonth() &&
+        event.getDate() === this.props.filter.date.getDate())) {
+      return null
+    } else if (!(this.props.data.type === this.props.filter.type.value) && !(this.props.filter.type.value === 'ALL')) {
       return null
     }
 

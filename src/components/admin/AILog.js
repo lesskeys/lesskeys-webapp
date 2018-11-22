@@ -5,6 +5,14 @@ import 'react-datepicker/dist/react-datepicker.css'
 import Sidebar from './Sidebar'
 import Log from './Log'
 import DatePicker from 'react-datepicker'
+import Select from 'react-select';
+
+const logTypes = [
+  { value: 'ALL', label: 'ALL' },
+  { value: 'UNLOCK', label: 'UNLOCK' },
+  { value: 'LOGIN', label: 'LOGIN' },
+  { value: 'SYSTEM', label: 'SYSTEM' }
+];
 
 class AILog extends Component {
   constructor (props) {
@@ -13,9 +21,13 @@ class AILog extends Component {
     this.state = {
       isLoading: true,
       log: [],
-      startDate: new Date()
+      filter: {
+        date: new Date(),
+        type: logTypes[0]
+      }
     }
-    this.handleChange = this.handleChange.bind(this)
+    this.handleDateChange = this.handleDateChange.bind(this)
+    this.handleTypeChange = this.handleTypeChange.bind(this)
   }
 
   async componentDidMount() {
@@ -32,9 +44,21 @@ class AILog extends Component {
     this.setState({ log: list, isLoading: false});
   }
 
-  handleChange(date) {
+  handleDateChange(selected) {
     this.setState({
-      startDate: date
+      filter: {
+        date: selected,
+        type: this.state.filter.type
+      }
+    });
+  }
+
+  handleTypeChange(selected) {
+    this.setState({
+      filter: {
+        date: this.state.filter.date,
+        type: selected
+      }
     });
   }
 
@@ -42,7 +66,7 @@ class AILog extends Component {
 
     const logList = this.state.log.map(l => {
       return ([
-        <Log key={this.state.log.indexOf(l)} data={l} filter={this.state.startDate}/>
+        <Log key={this.state.log.indexOf(l)} data={l} filter={this.state.filter}/>
       ])
     })
 
@@ -51,7 +75,8 @@ class AILog extends Component {
         <Sidebar/>
         <div className="mainAI">
           <div className="filterSection">
-            <DatePicker className="filterDate" selected={this.state.startDate} onChange={this.handleChange}/>
+            <DatePicker className="filterDate" selected={this.state.filter.date} onChange={this.handleDateChange}/>
+            <Select className="filterType" value={this.state.filter.type} onChange={this.handleTypeChange} options={logTypes} />
           </div>
           <div className="seperator"/>
           {logList}
