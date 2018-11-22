@@ -75,8 +75,13 @@ class AILog extends Component {
         <Sidebar/>
         <div className="mainAI">
           <div className="filterSection">
-            <DatePicker className="filterDate" selected={this.state.filter.date} onChange={this.handleDateChange}/>
-            <Select className="filterType" value={this.state.filter.type} onChange={this.handleTypeChange} options={logTypes} />
+            <DatePicker className="filterDate" dateFormat="dd.MM.yyyy" 
+              todayButton={"Today"} selected={this.state.filter.date} onChange={this.handleDateChange}/>
+            <Select className="filterType" 
+              value={this.state.filter.type} onChange={this.handleTypeChange} options={logTypes} />
+            <div className="requestButton">
+              Request full log
+            </div>
           </div>
           <div className="seperator"/>
           {logList}

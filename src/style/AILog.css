@@ -63,10 +63,11 @@
 
 .filterDate {
   grid-column: 1;
-  height: 32px;
-  border: 2px solid silver;
+  height: 34px;
+  border: 1px solid silver;
   border-radius: 5px;
   max-width: 100px;
+  text-align: center;
 }
 
 .filterDate:focus {
@@ -78,4 +79,27 @@
   grid-column: 2;
   font-size: 12px;
   max-width: 100px;
+  border-radius: 5px;
+}
+
+.requestButton {
+  grid-column: 3;
+  justify-self: right;
+  align-self: center;
+  text-align: center;
+  width: 150px;
+  height: 34px;
+  background-color: #1fa6ff;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.requestButton:hover {
+  background-color: #0099ff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
