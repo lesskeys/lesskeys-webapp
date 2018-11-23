@@ -5,7 +5,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 import Sidebar from './Sidebar'
 import Log from './Log'
 import DatePicker from 'react-datepicker'
-import Select from 'react-select';
+import Select from 'react-select'
+import LogRequestModal from './LogRequestModal'
 
 const logTypes = [
   { value: 'ALL', label: 'ALL' },
@@ -24,7 +25,8 @@ class AILog extends Component {
       filter: {
         date: new Date(),
         type: logTypes[0]
-      }
+      },
+      modalOpen: false
     }
     this.handleDateChange = this.handleDateChange.bind(this)
     this.handleTypeChange = this.handleTypeChange.bind(this)
@@ -62,6 +64,12 @@ class AILog extends Component {
     });
   }
 
+  toggleModal = () => {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    })
+  }
+
   render () {
 
     const logList = this.state.log.map(l => {
@@ -79,13 +87,14 @@ class AILog extends Component {
               todayButton={"Today"} selected={this.state.filter.date} onChange={this.handleDateChange}/>
             <Select className="filterType" 
               value={this.state.filter.type} onChange={this.handleTypeChange} options={logTypes} />
-            <div className="requestButton">
+            <div className="requestButton" onClick={this.toggleModal}>
               Request full log
             </div>
           </div>
           <div className="seperator"/>
           {logList}
         </div>
+        <LogRequestModal show={this.state.modalOpen} toggleModal={this.toggleModal} date={this.state.filter.date}/>
       </div>
     )
   }
