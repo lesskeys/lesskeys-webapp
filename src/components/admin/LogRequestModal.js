@@ -44,26 +44,28 @@ class LogRequestModal extends Component {
     })
   }
 
+  requestLog() {
+
+  }
+
   render () {
     if (!this.props.show) {
       return null
     }
 
-    var options = { year: 'numeric', month: 'numeric', day: 'numeric' , hour: 'numeric' , minute: 'numeric' }
+    var options = { year: 'numeric', month: 'numeric', day: 'numeric' }
 
     return (
       <div className="requestBackdrop" onClick={(e) => this.onClickOutside(e)}>
         <div className="requestModal">
-          <div className="grid">
+          <div>
             <div className="header">
               Request log for {this.props.date.toLocaleDateString('de-DE', options)}
             </div>
-            <div className="center">
-              <Select className="requestType" onChange={this.handleTypeChange} options={requestTypes} />
-              <textarea className="requestMessage" maxLength="500" value={this.state.message} onChange={evt => this.updateMessage(evt)}/>
-            </div>
-            <div className="footer">
-
+            <Select className="requestType" onChange={this.handleTypeChange} options={requestTypes} />
+            <textarea className="requestMessage" maxLength="500" value={this.state.message} onChange={evt => this.updateMessage(evt)}/>
+            <div className="requestButton" onClick={this.requestLog} >
+              Request
             </div>
           </div>
         </div>
