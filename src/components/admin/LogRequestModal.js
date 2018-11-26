@@ -8,13 +8,16 @@ const requestTypes = [
   { value: 'GENERAL', label: 'GENERAL' }
 ]
 
+const options = { year: 'numeric', month: 'numeric', day: 'numeric' }
+
 class LogRequestModal extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       message: '',
-      requestType: ''
+      requestType: '',
+      date: props.date.toLocaleDateString('de-DE', options)
     }
     this.handleTypeChange = this.handleTypeChange.bind(this)
   }
@@ -44,16 +47,30 @@ class LogRequestModal extends Component {
     })
   }
 
-  requestLog() {
-
+  requestLog = () => {
+    fetch('/ai/log/request', {
+      method: 'post',
+      headers: {
+        "Content-Type": "application/json; charset-UTF-8"
+      },
+      body: JSON.stringify({
+        date: this.state.date,
+        type: this.state.requestType.value,
+        message: this.state.message
+      })
+    }).then((response) => {
+      return response.text;
+    }).then((data) => {
+      if (!(data === 'true')) {
+        this.props.failure()
+      }
+    })
   }
 
   render () {
     if (!this.props.show) {
       return null
     }
-
-    var options = { year: 'numeric', month: 'numeric', day: 'numeric' }
 
     return (
       <div className="requestBackdrop" onClick={(e) => this.onClickOutside(e)}>

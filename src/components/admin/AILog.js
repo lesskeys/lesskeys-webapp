@@ -8,6 +8,19 @@ import DatePicker from 'react-datepicker'
 import Select from 'react-select'
 import LogRequestModal from './LogRequestModal'
 
+const Failure = (props) => {
+  if (!props.show) {
+    return null
+  }
+  return (
+    <div className="failure">
+      <div className="text">
+        Anfrage zur Log-Einsicht hat nicht funktioniert!
+      </div>
+    </div>
+  )
+}
+
 const logTypes = [
   { value: 'ALL', label: 'ALL' },
   { value: 'UNLOCK', label: 'UNLOCK' },
@@ -26,7 +39,8 @@ class AILog extends Component {
         date: new Date(),
         type: logTypes[0]
       },
-      modalOpen: false
+      modalOpen: false,
+      requestError: false
     }
     this.handleDateChange = this.handleDateChange.bind(this)
     this.handleTypeChange = this.handleTypeChange.bind(this)
@@ -70,6 +84,12 @@ class AILog extends Component {
     })
   }
 
+  showFailure = () => {
+    this.setState({
+      requestError: true
+    })
+  }
+
   render () {
 
     const logList = this.state.log.map(l => {
@@ -82,6 +102,7 @@ class AILog extends Component {
       <div>
         <Sidebar/>
         <div className="mainAI">
+          <Failure show={this.state.requestError}/>
           <div className="filterSection">
             <DatePicker className="filterDate" dateFormat="dd.MM.yyyy" 
               todayButton={"Today"} selected={this.state.filter.date} onChange={this.handleDateChange}/>
@@ -94,7 +115,7 @@ class AILog extends Component {
           <div className="seperator"/>
           {logList}
         </div>
-        <LogRequestModal show={this.state.modalOpen} toggleModal={this.toggleModal} date={this.state.filter.date}/>
+        <LogRequestModal show={this.state.modalOpen} toggleModal={this.toggleModal} date={this.state.filter.date} failure={this.showFailure}/>
       </div>
     )
   }
