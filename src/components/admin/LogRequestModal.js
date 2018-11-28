@@ -55,7 +55,7 @@ class LogRequestModal extends Component {
       },
       body: JSON.stringify({
         date: this.state.date,
-        type: this.state.requestType.value,
+        type: this.state.requestType,
         message: this.state.message
       })
     }).then((response) => {
