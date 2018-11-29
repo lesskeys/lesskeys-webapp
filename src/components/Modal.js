@@ -6,7 +6,8 @@ class Modal extends Component {
     super(props);
 
     this.state = {
-      inputValue: ''
+      inputValue: '',
+      sender: ''
     }
   }
 
@@ -29,6 +30,12 @@ class Modal extends Component {
     });
   }
 
+  updateSender (evt) {
+    this.setState({
+      sender: evt.target.value
+    });
+  }
+
   sendRingMessage = () => {
     fetch('/ring/send', {
       method: 'put',
@@ -37,7 +44,8 @@ class Modal extends Component {
       },
       body: JSON.stringify({
         userId: this.props.user.userId,
-        message: this.state.inputValue
+        message: this.state.inputValue,
+        sender: this.state.sender
       })
     })
     this.cancelRing()
@@ -56,6 +64,7 @@ class Modal extends Component {
             Klingeln bei {this.props.user.firstName}
           </div>
           <div className="modalBody">
+            <input type="text" placeholder="Absender" value={this.state.sender} onChange={evt => this.updateSender(evt)}/>
             <textarea className="messageArea" maxLength="100" value={this.state.inputValue} onChange={evt => this.updateInputValue(evt)}/>
           </div>
           <div className="modalFooter">
