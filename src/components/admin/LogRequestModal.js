@@ -105,10 +105,11 @@ class LogRequestModal extends Component {
             <div className="header">
               Request log for {this.props.date.toLocaleDateString('de-DE', options)}
             </div>
+            <div className="requestSeperator" />
             <Select className="requestType" onChange={this.handleTypeChange} options={requestTypes} />
             <UserSelect type={this.state.requestType} userList={this.props.userList} handleUserChange={this.handleUserChange} />
             <textarea className="requestMessage" maxLength="500" value={this.state.message} onChange={evt => this.updateMessage(evt)}/>
-            <div className="requestButton" onClick={this.requestLog} >
+            <div className="requestButtonSubmit" onClick={this.requestLog} >
               Request
             </div>
           </div>

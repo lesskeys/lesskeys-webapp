@@ -29,20 +29,21 @@
 }
 
 .requestMessage {
+  margin: 10px auto;
+  display: block;
   width: 80%;
   height: 6ch;
 }
 
 .requestType {
+  margin: 10px auto;
   font-size: 12px;
   width: 150px;
 }
 
-.requestButton {
-  grid-column: 3;
-  justify-self: right;
-  align-self: center;
-  text-align: center;
+.requestButtonSubmit {
+  display: flex;
+  margin: 10px auto;
   width: 150px;
   height: 34px;
   background-color: #1fa6ff;
@@ -50,12 +51,19 @@
   cursor: pointer;
   border: none;
   border-radius: 2px;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.requestButton:hover {
+.requestButtonSubmit:hover {
   background-color: #0099ff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.requestSeperator {
+  width: 10em;
+  height: 2px;
+  margin: 20px auto;
+  border-radius: 5px;
+  background-color: lightslategray;
 }
