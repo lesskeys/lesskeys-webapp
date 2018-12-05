@@ -84,9 +84,8 @@ class LogRequestModal extends Component {
         userId: this.state.userId
       })
     }).then((response) => {
-      return response.text;
+      return response.text();
     }).then((data) => {
-      console.log(data)
       if (!(data === 'true')) {
         this.props.failure()
       }
