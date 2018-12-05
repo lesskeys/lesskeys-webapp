@@ -5,6 +5,7 @@ import * as FontAwesome from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import store from '../store';
 import userAction from '../actions/user-action'
+import userListAction from '../actions/user-list-action'
 
 const WrongInput = (props) => {
   if (!props.show) {
@@ -49,6 +50,14 @@ class LoginAdmin extends Component {
     this.setState({
       password: evt.target.value
     })
+  }
+
+  async componentDidMount() {
+    const response = await fetch('/ring/list');
+    const list = await response.json();
+    store.dispatch(userListAction( 'GET_USER_LIST', {
+      'userList': list
+    }))
   }
 
   onFormSubmit = () => {
