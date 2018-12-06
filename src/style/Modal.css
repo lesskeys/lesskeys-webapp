@@ -10,62 +10,77 @@
 .modal {
   position: fixed;
   display: block;
-  background: lightgray;
+  background: white;
   border-radius: 5px;
-  width: 95%;
+  min-width: 15em;
   min-height: 15em;
-  max-width: 30em;
-  max-height: 30em;
+  max-width: 25em;
+  max-height: 35em;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
 .modalHeader {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  padding: 15px 0;
-  border-radius: 5px 5px 0 0;
+  margin-top: 10px;
   text-align: center;
-  background-color: gray;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-.modalBody {
-  position: absolute;
-  width: 95%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.modal input {
+  margin: 5px auto;
+  width: 80%;
 }
 
 .messageArea {
+  margin: 10px auto;
+  display: block;
   width: 80%;
-  height: 6ch;
+  height: 8ch;
 }
 
 .modalFooter {
-  position: absolute;
-  bottom: 0;
   width: 100%;
+  margin-top: 15px;
   display: grid;
-  grid-template-columns: auto auto;
-}
-
-.cancelButton {
-  grid-column: 1;
-  background: lightcoral;
-  text-align: center;
-  padding: 10px 0;
-  border-radius: 0 0 0 5px;
-  cursor: pointer;
+  grid-template-columns: 50% 50%;
 }
 
 .sendButton {
-  grid-column: 2;
-  background: lightgreen;
-  text-align: center;
-  padding: 10px 0;
-  border-radius: 0 0 5px 0;
+  grid-column: 1;
+  display: flex;
+  width: 80%;
+  height: 34px;
+  margin: 10px auto;
+  background-color: #1fa6ff;
+  color: white;
   cursor: pointer;
+  border: none;
+  border-radius: 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancelButton {
+  grid-column: 2;
+  display: flex;
+  width: 80%;
+  height: 34px;
+  margin: 10px auto;
+  background-color: lightcoral;
+  color: whitesmoke;
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalSeperator {
+  width: 90%;
+  height: 2px;
+  margin: 10px auto;
+  border-radius: 5px;
+  background-color: lightslategray;
 }

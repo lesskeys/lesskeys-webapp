@@ -63,16 +63,15 @@ class Modal extends Component {
           <div className="modalHeader">
             Klingeln bei {this.props.user.firstName}
           </div>
-          <div className="modalBody">
-            <input type="text" placeholder="Absender" value={this.state.sender} onChange={evt => this.updateSender(evt)}/>
-            <textarea className="messageArea" maxLength="100" value={this.state.inputValue} onChange={evt => this.updateInputValue(evt)}/>
-          </div>
+          <div className="modalSeperator" />
+          <input type="text" placeholder="Absender" value={this.state.sender} onChange={evt => this.updateSender(evt)}/>
+          <textarea className="messageArea" maxLength="100" value={this.state.inputValue} onChange={evt => this.updateInputValue(evt)}/>
           <div className="modalFooter">
-            <div className="cancelButton" onClick={this.cancelRing}>
-              Abbrechen
-            </div>
             <div className="sendButton" onClick={this.sendRingMessage}>
               Senden
+            </div>
+            <div className="cancelButton" onClick={this.cancelRing}>
+              Abbrechen
             </div>
           </div>
         </div>
