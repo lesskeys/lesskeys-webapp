@@ -14,9 +14,10 @@
 }
 
 .sidebar .logo {
-  height: 30px;
-  width: 30px;
-  padding-left: 10px;
+  height: 40px;
+  width: 40px;
+  padding-bottom: 25px;
+  padding-left: 3px;
 }
 
 .sidebar .element {

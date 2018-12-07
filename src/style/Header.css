@@ -1,0 +1,23 @@
+.generalHeader {
+  display: grid;
+  height: 50px;
+  background-color: lightgrey;
+  grid-template-columns: 60px auto;
+}
+
+.headerLogo {
+  grid-column: 1;
+  padding-left: 10px;
+  height: 40px;
+  justify-self: left;
+  align-self: center;
+}
+
+.headerText {
+  grid-column: 2;
+  font-size: 20px;
+  padding-right: 60px;
+  font-style: bold;
+  justify-self: center;
+  align-self: center;
+}

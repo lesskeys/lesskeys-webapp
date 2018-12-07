@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import '../../style/AILog.css';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import '../../style/AILog.css'
 
 class Log extends Component {
   constructor (props) {
@@ -42,4 +43,10 @@ class Log extends Component {
   }
 }
 
-export default Log;
+const mapStateToProps = (store) => {
+  return {
+    userList: store.userListReducer.userList
+  }
+}
+
+export default connect(mapStateToProps)(Log);

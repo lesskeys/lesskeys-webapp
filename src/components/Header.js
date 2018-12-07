@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import lesskeys from '../lesskeys.svg'
+import '../style/Header.css'
 
 class Header extends Component {
 
   render () {
     return (
-      <header className="App-header">
-        <h1 className="App-title">Keyless Webapp</h1>
-      </header>
+      <div className="generalHeader">
+        <img src={lesskeys} className="headerLogo" alt="lesskeys" />
+        <div className="headerText">
+          LessKeys Webapp
+        </div>
+      </div>
     );
   }
 }
