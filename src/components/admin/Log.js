@@ -24,6 +24,16 @@ class Log extends Component {
       return null
     }
 
+    var actorName = ""
+    if (this.props.data.actor.startsWith("User")) {
+      var actorId = this.props.data.actor.split(" ")[1]
+      var user = this.props.userList.find(u => {
+        return u.userId === parseInt(actorId, 10)
+      })
+      actorName = user.email
+    }
+
+
     return (
       <div className="logContainer">
         <div className="logItemDate">
@@ -36,7 +46,7 @@ class Log extends Component {
           {this.props.data.event}
         </div>
         <div className="logItemActor">
-          {this.props.data.actor}
+          {actorName.split("@")[0]}
         </div>
       </div>
     )
