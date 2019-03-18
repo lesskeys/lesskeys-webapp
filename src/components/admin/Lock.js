@@ -10,13 +10,21 @@ class Lock extends Component {
       data: props.data,
       name: props.data.name,
       ip: props.data.address,
-      inEditMode: false
+      psk: "",
+      inEditMode: false,
+      inPskMode: false
     }
   }
 
   toggleEditable = () => {
     this.setState({
       inEditMode: !this.state.inEditMode
+    })
+  }
+
+  togglePsk = () => {
+    this.setState({
+      inPskMode: !this.state.inPskMode
     })
   }
 
@@ -29,6 +37,12 @@ class Lock extends Component {
   updateIp (evt) {
     this.setState({
       ip: evt.target.value
+    })
+  }
+
+  updatePsk (evt) {
+    this.setState({
+      psk: evt.target.value
     })
   }
 
@@ -73,6 +87,22 @@ class Lock extends Component {
           </div>
         </div>
       )
+    } else if (this.state.inPskMode) {
+      return (
+        <div className="lockContainer">
+          <div className="lockItemName">
+            <input type="text" value={this.state.psk} onChange={(e) => this.updatePsk(e)} />
+          </div>
+          <div className="lockItemButtonContainer">
+            <div className="abort" onClick={this.togglePsk}>
+              <FontAwesome.FaTimes className="icon" />
+            </div>
+            <div className="save" onClick={this.togglePsk}>
+              <FontAwesome.FaCheck className="icon" />
+            </div>
+          </div>
+        </div>
+      )
     } else {
       return (
         <div className="lockContainer">
@@ -85,6 +115,9 @@ class Lock extends Component {
           <div className="lockItemButtonContainer">
             <div className="edit" onClick={this.toggleEditable}>
               <FontAwesome.FaPen className="icon" />
+            </div>
+            <div className="psk" onClick={this.togglePsk}>
+              <FontAwesome.FaKey className="icon" />
             </div>
           </div>
         </div>
